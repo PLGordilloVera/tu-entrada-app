@@ -97,7 +97,7 @@ export default function TicketPage() {
           
           <div className="border border-gray-200 rounded-lg p-5 shadow-sm bg-white">
             <div className="inline-block bg-[#4fa6e8] text-white font-bold text-[14px] px-3 py-1 rounded-sm mb-4">
-              Expediente: JX2A7TB622JM
+              Expediente: {user?.expediente || "JX2A7TB622JM"}
             </div>
 
             <div className="flex flex-col gap-1 mb-5 text-[15px] text-[#111]">

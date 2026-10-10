@@ -8,6 +8,7 @@ interface User {
   purchaseDate?: string;
   qrCode?: string;
   profilePic?: string;
+  expediente?: string;
 }
 
 interface AuthState {
@@ -44,8 +45,10 @@ export const useAuthStore = create<AuthState>()(
         const randomQrPart2 = Math.random().toString(36).substring(2, 5).toUpperCase();
         const randomQrPart3 = Math.random().toString(36).substring(2, 6).toUpperCase();
         const qrCode = `${randomQrPart1}${randomQrPart2}9VY${randomQrPart3}`;
+
+        const expediente = Math.random().toString(36).substring(2, 14).toUpperCase();
           
-        const newUser = { name, email, password, purchaseDate, qrCode, profilePic };
+        const newUser = { name, email, password, purchaseDate, qrCode, profilePic, expediente };
         set((state) => ({ 
           usersDB: [...state.usersDB, newUser],
           user: newUser, 
@@ -55,7 +58,7 @@ export const useAuthStore = create<AuthState>()(
       logout: () => set({ user: null, isAuthenticated: false }),
     }),
     {
-      name: 'auth-storage',
+      name: 'tu-entrada-auth-v2', // Changed to force reset of all existing user data
     }
   )
 );
