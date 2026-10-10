@@ -2,6 +2,11 @@
 
 @theme {
   --color-tuentrada-blue: #17529b;
+  --animate-scan: scan 2s ease-in-out infinite;
+  @keyframes scan {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(176px); }
+  }
 }
 
 :root {

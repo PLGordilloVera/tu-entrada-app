@@ -56,17 +56,22 @@ export default function TicketPage() {
           </div>
 
           {/* QR Section */}
-          <div className="bg-white rounded-lg p-5 flex flex-col items-center shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
-            <div className="mb-4">
+          <div className="bg-white rounded-lg p-5 flex flex-col items-center shadow-[0_1px_3px_rgba(0,0,0,0.1)] relative overflow-hidden">
+            <div className="mb-4 relative">
               <QRCodeSVG 
                 value={user?.qrCode || "93486BAR9VY60R"} 
                 size={180} 
                 level="H" 
                 includeMargin={false} 
               />
+              {/* Anti-screenshot moving line animation */}
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-500 shadow-[0_0_8px_2px_rgba(59,130,246,0.8)] animate-scan" />
             </div>
-            <div className="text-[14px] text-[#333] mb-4 tracking-wide font-medium">
+            <div className="text-[14px] text-[#333] mb-2 tracking-wide font-medium">
               {user?.qrCode || "93486BAR9VY60R"}
+            </div>
+            <div className="text-[11px] text-red-600 font-bold uppercase tracking-wider mb-4 text-center animate-pulse">
+              ⚠️ Capturas de pantalla no válidas
             </div>
             <button className="w-full p-3 bg-white border border-[#111] rounded-lg text-[15px] font-bold text-[#111] active:bg-gray-100 transition">
               Expandir QR
