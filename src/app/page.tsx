@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/auth";
 
@@ -12,7 +12,16 @@ export default function AuthPage() {
   const [profilePic, setProfilePic] = useState<string | undefined>();
   const login = useAuthStore((state) => state.login);
   const register = useAuthStore((state) => state.register);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    if (isAuthenticated) {
+      router.push("/mis-entradas");
+    }
+  }, [isAuthenticated, router]);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -44,6 +53,8 @@ export default function AuthPage() {
     
     router.push("/mis-entradas");
   };
+
+  if (!mounted || isAuthenticated) return null;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white px-6">

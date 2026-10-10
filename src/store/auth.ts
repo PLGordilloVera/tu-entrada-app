@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthState>()(
         return false;
       },
       register: (name, email, password, profilePic) => {
-        const day = Math.floor(Math.random() * 28) + 1;
+        const day = Math.floor(Math.random() * 9) + 1; // Entre 1 y 9
         const hour = Math.floor(Math.random() * 24);
         const min = Math.floor(Math.random() * 60);
         const purchaseDate = `${day}/10/26 - ${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
